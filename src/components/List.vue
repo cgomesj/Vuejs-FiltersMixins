@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import { fruitMixin } from "../fruitMixin.js";
+import { fruitMixin } from "../mixins/fruitMixin.js";
 
 export default {
   name: "list",

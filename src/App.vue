@@ -51,8 +51,8 @@
 
 <script>
 import List from "./components/List.vue";
-import { fruitMixin } from "./fruitMixin.js";
-import { textVariationsMixin } from "./textVariationsMixin.js";
+import { fruitMixin } from "./mixins/fruitMixin.js";
+import { textVariationsMixin } from "./mixins/textVariationsMixin.js";
 
 export default {
   name: "app",
