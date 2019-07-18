@@ -3,11 +3,11 @@ import App from "./App.vue";
 
 Vue.config.productionTip = false;
 
-Vue.filter("toLowercase", function(value) {
+Vue.filter("toLowercase", value => {
   return value.toLowerCase();
 });
 
-Vue.filter("wordLength", function(value) {
+Vue.filter("wordLength", value => {
   return value + " (" + value.length + ")";
 });
 

@@ -1,10 +1,4 @@
 export const textVariationsMixin = {
-  data() {
-    return {
-      text: "Regular Text"
-    };
-  },
-
   computed: {
     wordLengthComputed() {
       return this.text + " (" + this.text.length + ")";

@@ -16,9 +16,17 @@
 
         <hr />
 
-        <component :is="'app-list'"></component>
+        <div class="card">
+          <div class="card-header">
+            <h2>List Component</h2>
+          </div>
+          <div class="card-body">
+            <component :is="'app-list'"></component>
+          </div>
+        </div>
 
         <hr />
+
         <h2>App Inside Content</h2>
 
         <button class="btn btn-success mx-3" @click="fruits.push('Lemon')">
@@ -66,7 +74,13 @@ export default {
     }
   },
 
-  mixins: [fruitMixin, textVariationsMixin]
+  mixins: [fruitMixin, textVariationsMixin],
+
+  data() {
+    return {
+      text: "Regular Text"
+    };
+  }
 };
 </script>
 
@@ -78,5 +92,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+p {
+  color: gray;
 }
 </style>
