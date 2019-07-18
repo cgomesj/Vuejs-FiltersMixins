@@ -3,11 +3,30 @@
     <div class="row">
       <div class="col">
         <h1>Filters and Mixins</h1>
+
         <p>{{ text }}</p>
+        <h3>Filtered</h3>
+        <p>{{ text | wordLength }}</p>
+        <p>{{ text | reverseText }}</p>
         <p>{{ text | toUppercase }}</p>
         <p>{{ text | toUppercase | toLowercase }}</p>
+        <h3>Computed</h3>
+        <p>{{ wordLengthComputed }}</p>
+        <p>{{ reverseTextComputed }}</p>
+
         <hr />
+
+        <component :is="'app-list'"></component>
+
+        <hr />
+        <h2>App Inside Content</h2>
+
+        <button class="btn btn-success mx-3" @click="fruits.push('Lemon')">
+          Add Lemon
+        </button>
+
         <input v-model="filterText" type="text" />
+
         <ul class="list-unstyled">
           <li
             class="my-2"
@@ -23,30 +42,31 @@
 </template>
 
 <script>
+import List from "./components/List.vue";
+import { fruitMixin } from "./fruitMixin.js";
+import { textVariationsMixin } from "./textVariationsMixin.js";
+
 export default {
   name: "app",
+
+  components: {
+    "app-list": List
+  },
 
   filters: {
     toUppercase(value) {
       return value.toUpperCase();
+    },
+
+    reverseText(value) {
+      return value
+        .split("")
+        .reverse()
+        .join("");
     }
   },
 
-  data() {
-    return {
-      text: "Regular Text",
-      fruits: ["Banana", "Apple", "Mango", "Melon"],
-      filterText: ""
-    };
-  },
-
-  computed: {
-    filteredFruits() {
-      return this.fruits.filter(element => {
-        return element.match(this.filterText);
-      });
-    }
-  }
+  mixins: [fruitMixin, textVariationsMixin]
 };
 </script>
 
